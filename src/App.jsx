@@ -4,15 +4,24 @@ import TopBar from "./components/topBar";
 import MyFooter from "./components/MyFooter";
 import BookList from "./components/BookList";
 import Fantasy from "./data/books/fantasy.json";
+import { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <TopBar />
-      <BookList books={Fantasy} />
-      <MyFooter />
-    </div>
-  );
+class App extends Component {
+  state = {
+    books: Fantasy,
+  };
+  scegli = (book) => {
+    this.setState({ books: book });
+  };
+  render() {
+    return (
+      <div className="App">
+        <TopBar Fn={this.scegli} />
+        <BookList books={this.state.books} />
+        <MyFooter />
+      </div>
+    );
+  }
 }
 
 export default App;
