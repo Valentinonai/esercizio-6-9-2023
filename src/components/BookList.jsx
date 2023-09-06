@@ -44,7 +44,6 @@ class BookList extends Component {
             </Row>
           </Form>
         </div>
-        {console.log(this.state.books)}
         {this.state.books.length > 0 && this.state.books[0].category === this.props.books[0].category
           ? this.state.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)
           : this.props.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)}
