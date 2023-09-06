@@ -25,7 +25,7 @@ class TopBar extends Component {
               <Nav.Link href="#browse" className="text-white">
                 Browse
               </Nav.Link>
-              <NavDropdown title="Generi" id="basic-nav-dropdown">
+              <NavDropdown title="Categories" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1" onClick={() => this.props.Fn(Fantasy)}>
                   Fantasy
                 </NavDropdown.Item>
