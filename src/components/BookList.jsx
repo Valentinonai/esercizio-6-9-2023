@@ -10,13 +10,17 @@ class BookList extends Component {
   };
   filterBookList = (event) => {
     event.preventDefault();
-    this.state.ricerca
-      ? this.setState({
-          books: this.state.books.filter((elem) => elem.title.toUpperCase().includes(this.state.ricerca.toUpperCase())),
-        })
-      : this.setState({
-          books: this.state.booksOriginal,
-        });
+    this.setState({ books: this.props.books, booksOriginal: this.props.books }, () => {
+      this.state.ricerca
+        ? this.setState({
+            books: this.state.books.filter((elem) =>
+              elem.title.toUpperCase().includes(this.state.ricerca.toUpperCase())
+            ),
+          })
+        : this.setState({
+            books: this.state.booksOriginal,
+          });
+    });
   };
 
   render() {
@@ -40,9 +44,10 @@ class BookList extends Component {
             </Row>
           </Form>
         </div>
-        {this.state.books.map((elem, index) => (
-          <SingleBook book={elem} key={`p:${index}`} />
-        ))}
+        {console.log(this.state.books)}
+        {this.state.books.length > 0 && this.state.books[0].category === this.props.books[0].category
+          ? this.state.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)
+          : this.props.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)}
       </Row>
     );
   }
