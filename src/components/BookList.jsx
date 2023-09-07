@@ -12,14 +12,20 @@ class BookList extends Component {
     event.preventDefault();
     this.setState({ books: this.props.books, booksOriginal: this.props.books }, () => {
       this.state.ricerca
-        ? this.setState({
-            books: this.state.books.filter((elem) =>
-              elem.title.toUpperCase().includes(this.state.ricerca.toUpperCase())
-            ),
-          })
-        : this.setState({
-            books: this.state.booksOriginal,
-          });
+        ? this.setState(
+            {
+              books: this.state.books.filter((elem) =>
+                elem.title.toUpperCase().includes(this.state.ricerca.toUpperCase())
+              ),
+            },
+            () => this.setState({ ricerca: "" })
+          )
+        : this.setState(
+            {
+              books: this.state.booksOriginal,
+            },
+            () => this.setState({ ricerca: "" })
+          );
     });
   };
 
@@ -35,6 +41,7 @@ class BookList extends Component {
                   type="text"
                   placeholder="Search"
                   className=" mr-sm-2"
+                  value={this.state.ricerca}
                   onChange={(event) => this.setState({ ricerca: event.target.value })}
                 />
               </Col>
