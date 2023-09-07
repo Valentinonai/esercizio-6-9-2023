@@ -25,9 +25,9 @@ class BookList extends Component {
 
   render() {
     return (
-      <Row className="p-5 bg-dark text-secondary gy-3 pt-0">
-        <div className="d-flex justify-content-between align-items-center">
-          <h2 className="display-1 mb-5">{this.props.books[0].category.toUpperCase()}</h2>
+      <Row className="p-5 bg-dark text-secondary gy-3 pt-0 ">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h2 className="display-1">{this.props.books[0].category.toUpperCase()}</h2>
           <Form onSubmit={this.filterBookList}>
             <Row>
               <Col xs="auto">
