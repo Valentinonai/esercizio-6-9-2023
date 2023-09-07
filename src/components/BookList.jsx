@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import { Component } from "react";
 
@@ -51,9 +51,17 @@ class BookList extends Component {
             </Row>
           </Form>
         </div>
-        {this.state.books.length > 0 && this.state.books[0].category === this.props.books[0].category
-          ? this.state.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)
-          : this.props.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)}
+        {this.state.books.length > 0 ? (
+          this.state.books[0].category === this.props.books[0].category ? (
+            this.state.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)
+          ) : (
+            this.props.books.map((elem, index) => <SingleBook book={elem} key={`p:${index}`} />)
+          )
+        ) : (
+          <Alert key={"warning"} variant={"warning"}>
+            Nessun libro trovato
+          </Alert>
+        )}
       </Row>
     );
   }
